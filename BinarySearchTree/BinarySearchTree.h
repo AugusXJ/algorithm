@@ -132,7 +132,7 @@ void BinarySearchTree<T>::insert(const T &x, BinaryNode *&t, size_t f)
 	{
 		t = new BinaryNode(x, nullptr, nullptr);
 		if (f > floors)
-			floors = f;
+			floors = max(floors,f);
 	}
 	else if (x < t->element)
 		insert(x, t->left,f+1);
@@ -250,7 +250,6 @@ inline void BinarySearchTree<T>::printTree(BinaryNode * t) const
 		printTree(t->left);
 		printTree(t->right);
 	}
-
 }
 
 
