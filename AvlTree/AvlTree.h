@@ -270,6 +270,11 @@ inline void AvlTree<T>::makeEmpty(AvlNode * t)
 	t = nullptr;
 }
 
+
+/*
+功能：克隆节点t，返回新节点
+输入：t（被克隆节点）
+*/
 template<typename T>
 inline typename AvlTree<T>::AvlNode * AvlTree<T>::clone(AvlNode * t) const
 {
@@ -279,6 +284,10 @@ inline typename AvlTree<T>::AvlNode * AvlTree<T>::clone(AvlNode * t) const
 }
 
 
+/*
+功能：输出节点t并以先序遍历输出子树
+输入：t（待输出节点）
+*/
 template<typename T>
 inline void AvlTree<T>::printTree(AvlNode * t) const
 {
