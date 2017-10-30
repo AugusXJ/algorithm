@@ -117,8 +117,35 @@ bool AvlTree <T>::contains(const T &x)
 template<typename T>
 inline void AvlTree<T>::printTree() const
 {
-	cout << "先序遍历" << endl;
-	printTree(root);
+	cout << "层次遍历" << endl;
+	vector<AvlNode*> queue;
+	queue.push_back(root);
+	int flag = 1;
+	while (flag == 1)
+	{
+		flag = 0;
+		vector<AvlNode*> temp;
+		for (auto n : queue)
+		{
+			if (n != nullptr)
+			{
+				flag = 1;
+				cout << n->element << " ";
+				if (n->left || n->right != nullptr)
+					flag = 1;
+				temp.push_back(n->left);
+				temp.push_back(n->right);
+			}
+			else
+			{
+				cout << "X" << " ";
+				temp.push_back(nullptr);
+				temp.push_back(nullptr);
+			}
+		}
+		cout << endl;
+		queue = temp;
+	}
 }
 
 //------------------------------------------私有类工具函数-------------------------------------------
