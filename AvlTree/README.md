@@ -2,25 +2,25 @@
 ------------------
 
 ## Descritpion
-350行代码实现了平衡查找树的C++构造，具有增加删除，赋值等操作。 平衡二叉树与二叉查找树类似，但是增加了一个限制：每个节点的左子树和右子数深度之差不能大于1。
+350行代码实现了平衡查找树的C++构造，具有增加删除，赋值等操作。 平衡二叉树与二叉查找树类似，但是增加了一个限制：每个节点的左子树和右子数深度之差不能大于，因此在插入与删除操作时候需要使用单旋转和双旋转维护平衡二叉树的性质。
 
 代码：[AvlTree.h](AvlTree.h)
 
 ## Contents 
-- BinarySearchTree类
+- AvlTree类
 - 构造函数
-	- `BinarySearchTree()`
+	- `AvlTree()`
 	> 默认构造函数
-	- `BinarySearchTree(std::vector<T> &A, size_t rootIndex = 0)`
+	- `AvlTree(std::vector<T> &A, size_t rootIndex = 0)`
 	> 输入：A（vector数据数组）rootIndex（根节点所在索引，默认为0）
 	功能：根据数组构造二叉查找树
-	- `BinarySearchTree(const BinarySearchTree *rhs)`
+	- `AvlTree(const BinarySearchTree *rhs)`
 	> 拷贝构造函数
 - 析构函数
-	- `~BinarySearchTree()`
+	- `~AvlTree()`
 	> 析构函数
 - 重载操作符
-	- `const BinarySearchTree operator=(const BinarySearchTree *rhs)`
+	- `const AvlTree operator=(const AvlTree *rhs)`
 	> 重载赋值运算符
 - 功能函数
 	- `void insert(const T &x)`
