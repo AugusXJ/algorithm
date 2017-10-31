@@ -22,7 +22,7 @@
 	> 默认构造函数
 	- `RBTree(std::vector<T> &A, size_t rootIndex = 0)`
 	> 输入：A（vector数据数组）rootIndex（根节点所在索引，默认为0）
-	功能：根据数组构造二叉查找树
+	功能：根据数组构造红黑树
 	- `RBTree(const RBTree *rhs)`
 	> 拷贝构造函数
 - 析构函数
@@ -33,11 +33,11 @@
 	> 重载赋值运算符
 - 功能函数
 	- `void insert(const T &x)`
-	> 功能：往查找二叉树中插入元素x
+	> 功能：往红黑树中插入元素x
 	输入：x（待插入元素）
 
 	- `void erase(const T &x)`
-	> 功能：在查找二叉树中删除元素x
+	> 功能：在红黑树中删除元素x
 	输入：x（待删除元素）
 
 	- `bool contains(const T &x)`

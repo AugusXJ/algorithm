@@ -48,8 +48,8 @@ private:
 	void makeEmpty(RBNode *t);
 	RBNode* clone(RBNode *t) const;
 	void printTree(RBNode *t) const;
-	void RightRotate(RBNode *& k2);
-	void LeftRotate(RBNode *& k2);
+	void RightRotate(RBNode * k2);
+	void LeftRotate(RBNode * k2);
 };
 
 /*
@@ -95,7 +95,6 @@ void RBTree<T>::insert(const T &x)
 	{
 		RBNode* n = insert(x, root);
 		insert_maintenance(n);					//插入节点之后维护红黑树性质
-		
 	}
 	root->color = 1;
 		
@@ -190,6 +189,10 @@ inline typename RBTree<T>::RBNode * RBTree<T>::insert(const T &x, RBNode *&t)
 	return temp;
 }
 
+/*
+功能：插入操作中维护红黑树性质
+输入：（t)操作节点
+*/
 template<typename T>
 inline void RBTree<T>::insert_maintenance(RBNode * t)
 {
@@ -250,7 +253,7 @@ inline void RBTree<T>::erase(const T & x, RBNode *& t)
 	else
 	{
 		RBNode *oldnode = t;
-		erase_maintenance(t);
+		erase_maintenance(t);								//维护删除元素处红黑树性质
 		t = (t->left == nullptr) ? t->right : t->left;
 		if (oldnode == root)								//若删除的是根节点，改变根节点
 			root = t;
@@ -403,15 +406,24 @@ inline void RBTree<T>::printTree(RBNode * t) const
 输入：k2（不平衡节点）
 */
 template<typename T>
-inline void RBTree<T>::RightRotate(RBNode *& k2)
+inline void RBTree<T>::RightRotate(RBNode * k2)
 {
 	RBNode *k1 = k2->left;
+	//处理k2的父节点
+	k1->father = k2->father;
 	if (root == k2)
 		root = k1;
+	else
+	{
+		if (k2 == k2->father->left)
+			k2->father->left = k1;
+		else
+			k2->father->right = k1;
+	}
+	//处理k1和k2的关系
 	k2->left = k1->right;
 	if(k1->right!=nullptr)
 		k1->right->father = k2;
-	k1->father = k2->father;
 	k1->right = k2;
 	k2->father = k1;
 	k2 = k1;
@@ -422,11 +434,21 @@ inline void RBTree<T>::RightRotate(RBNode *& k2)
 输入：k2（不平衡节点）
 */
 template<typename T>
-inline void RBTree<T>::LeftRotate(RBNode *& k2)
+inline void RBTree<T>::LeftRotate(RBNode * k2)
 {
 	RBNode *k1 = k2->right;
+	//处理k2的父节点
+	k1->father = k2->father;
 	if (root == k2)
 		root = k1;
+	else
+	{
+		if (k2 == k2->father->left)
+			k2->father->left = k1;
+		else
+			k2->father->right = k1;
+	}
+	//处理k1和k2的关系
 	k2->right = k1->left;
 	if(k1->left!=nullptr)
 		k1->left->father = k2;
