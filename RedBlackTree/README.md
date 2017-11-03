@@ -12,6 +12,8 @@
 
 ###插入&&删除
 可参考[http://www.cnblogs.com/skywang12345/p/3245399.html](http://www.cnblogs.com/skywang12345/p/3245399.html)
+自己总结的图片：
+[图1](pic1.jpg) [图2](pic2.jpg)
 
 代码：[RedBlackTree.h](RedBlackTree.h)
 
